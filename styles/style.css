@@ -7,10 +7,9 @@
 
   background: var(--background-image) no-repeat top center,
     var(--background-color);
-  background-size: auto 768px;
+  background-size: cover;
   background-attachment: fixed;
   color: var(--main-text-color);
-  transition-duration: var(--transition-duration);
 }
 
 /* Header */
@@ -24,6 +23,35 @@
   .header {
     padding: 0 10px;
   }
+}
+
+.decorated-zone::before,
+::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+}
+
+.decorated-zone::before {
+  border-left: 1px solid var(--corners-color);
+  border-bottom: 1px solid var(--corners-color);
+  left: 20px;
+  bottom: 20px;
+}
+
+@media (width < 768px) and (width >= 375px) {
+  .decorated-zone::before {
+    left: 10px;
+    bottom: 17px;
+  }
+}
+
+.decorated-zone::after {
+  border-right: 1px solid var(--corners-color);
+  border-top: 1px solid var(--corners-color);
+  right: 20px;
+  top: 20px;
 }
 
 .header__rec {
@@ -99,10 +127,12 @@
 
 .header__theme-menu-button:focus-visible {
   border-bottom: 1px solid var(--corners-color);
+  outline: none;
 }
 
 .header__theme-menu-button_active {
   border: 1px solid;
+  pointer-events: none;
 }
 
 @media (width < 1024px) and (width >= 768px) {
@@ -117,12 +147,19 @@
   }
 }
 
-.header__title {
+.title {
   font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   font-weight: 700;
-  margin-left: -2%;
   color: var(--title-color);
+}
+
+.header__title {
+  margin-left: -2%;
   text-shadow: 4px 4px 0px var(--title-shadow);
+}
+
+.title-decor {
+  background: var(--title-decor);
 }
 
 .header__title-container {
@@ -209,7 +246,7 @@
   color: var(--section-title-color);
 }
 
-.dark-title {
+.accented-title {
   color: var(--article-title-color);
 }
 
@@ -255,7 +292,7 @@
 
 .section__article-text-link {
   border: transparent;
-  text-shadow: 3px 3px 0px var(--link-shadow);
+  text-shadow: 2px 2px 0px var(--link-shadow);
   transition-duration: var(--transition-duration);
 }
 
@@ -271,36 +308,36 @@
   outline: 1px solid var(--main-text-color);
 }
 
-.section:first-of-type,
-.section:nth-of-type(3) {
+.why,
+.how {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.section:first-of-type .section__title,
-.section:nth-of-type(3) .section__title {
+.why .section__title,
+.how .section__title {
   flex: 0 0 auto;
   width: 33%;
 }
 
 @media (width < 1024px) and (width >= 768px) {
-  .section:first-of-type .section__title,
-  .section:nth-of-type(3) .section__title {
+  .why .section__title,
+  .how .section__title {
     width: 32%;
   }
 }
 
 @media (width < 768px) and (width >= 375px) {
-  .section:first-of-type .section__title,
-  .section:nth-of-type(3) .section__title {
+  .why .section__title,
+  .how .section__title {
     width: 100%;
     margin-bottom: 20px;
   }
 }
 
-.section:first-of-type .section__article-list,
-.section:nth-of-type(3) .section__article-list {
+.why .section__article-list,
+.how .section__article-list {
   flex: 0 0 auto;
   width: 66%;
   flex-direction: column;
@@ -308,104 +345,100 @@
 }
 
 @media (width < 1024px) and (width >= 768px) {
-  .section:first-of-type .section__article-list,
-  .section:nth-of-type(3) .section__article-list {
+  .why .section__article-list,
+  .how .section__article-list {
     width: 65%;
   }
 }
 
 @media (width < 768px) and (width >= 375px) {
-  .section:first-of-type .section__article-list,
-  .section:nth-of-type(3) .section__article-list {
+  .why .section__article-list,
+  .how .section__article-list {
     width: 100%;
   }
 }
 
-.section:nth-of-type(2) .section__title {
+.what .section__title {
   width: 30%;
 }
 
 @media (width < 768px) and (width >= 375px) {
-  .section:nth-of-type(2) .section__title {
+  .what .section__title {
     width: 100%;
   }
 }
 
 @media (width >= 1024px) {
-  .section:nth-of-type(2) .section__article-list {
+  .what .section__article-list {
     justify-content: space-between;
   }
 }
 
 @media (width < 1024px) and (width >= 375px) {
-  .section:nth-of-type(2) .section__article-list {
+  .what .section__article-list {
     gap: 20px;
   }
 }
 
-.section:nth-of-type(2) .section__article-item {
+.what .section__article-item {
   flex: 0 0 auto;
   width: 32%;
 }
 
 @media (width < 1024px) and (width >= 375px) {
-  .section:nth-of-type(2) .section__article-item {
+  .what .section__article-item {
     flex: 1 0 auto;
     width: 100%;
   }
 }
 
-.section:last-of-type {
+.picture {
   display: grid;
 }
 
-.section:last-of-type .section__title {
+.picture .section__title {
   grid-column: 1/-1;
   width: 100%;
   margin: 0;
 }
 
-@media (width >= 768px) {
-  .section:last-of-type .section__image {
-    -o-object-fit: cover;
-    object-fit: cover;
-    -o-object-position: center;
-    object-position: center;
-    width: 100%;
-    height: 100%;
-  }
+.section__image {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
 
-  .section:last-of-type .section__image:first-of-type,
-  .section:last-of-type .section__image:last-of-type {
-    grid-column: span 2;
-  }
+.picture .section__image:first-of-type,
+.picture .section__image:last-of-type {
+  grid-column: span 2;
+}
 
-  .section:last-of-type .section__image:nth-of-type(2),
-  .section:last-of-type .section__image:nth-of-type(3) {
-    grid-row: span 2;
-  }
+.picture .section__image:nth-of-type(2),
+.picture .section__image:nth-of-type(3) {
+  grid-row: span 2;
 }
 
 @media (width < 768px) {
-  .section:last-of-type .section__image {
+  .picture .section__image {
     width: 100%;
     height: auto;
   }
 
-  .section:last-of-type .section__image-container {
+  .picture .section__image-container {
     width: 100px;
   }
 }
 
 @media (width >= 768px) {
-  .section:last-of-type {
+  .picture {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px 19px;
   }
 }
 
 @media (width < 768px) {
-  .section:last-of-type {
+  .picture {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -421,9 +454,6 @@
 }
 
 .footer__title {
-  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
-  font-weight: 700;
-  color: var(--title-color);
   text-shadow: 2px 2px 0px var(--title-shadow);
 }
 
