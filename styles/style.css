@@ -26,7 +26,7 @@
 }
 
 .decorated-zone::before,
-::after {
+.decorated-zone::after {
   content: "";
   position: absolute;
   width: 25px;
@@ -224,19 +224,15 @@
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 60px;
 }
 
 @media (width < 768px) and (width >= 375px) {
   .main {
     padding: 0 10px;
     margin: 34px 0;
-    gap: 50px;
+    gap: 30px;
   }
-}
-
-.section {
-  line-height: 130%;
 }
 
 .section__title {
@@ -272,18 +268,23 @@
   font-size: 18px;
   font-weight: 700;
   color: var(--article-title-color);
+  margin: 0 0 20px;
 }
 
 .section__article-item {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .section__article-title {
   font-size: 18px;
   font-weight: 700;
   color: var(--article-title-color);
+}
+
+.section__article-text {
+  line-height: 130%;
+  margin: 10px 0 20px;
 }
 
 .section__article-title_regular {
@@ -315,45 +316,38 @@
   justify-content: space-between;
 }
 
-.why .section__title,
-.how .section__title {
+.section__accented .section__title {
   flex: 0 0 auto;
   width: 33%;
 }
 
 @media (width < 1024px) and (width >= 768px) {
-  .why .section__title,
-  .how .section__title {
+  .section__accented .section__title {
     width: 32%;
   }
 }
 
 @media (width < 768px) and (width >= 375px) {
-  .why .section__title,
-  .how .section__title {
+  .section__accented .section__title {
     width: 100%;
     margin-bottom: 20px;
   }
 }
 
-.why .section__article-list,
-.how .section__article-list {
+.section__accented .section__article-list {
   flex: 0 0 auto;
   width: 66%;
   flex-direction: column;
-  gap: 20px;
 }
 
 @media (width < 1024px) and (width >= 768px) {
-  .why .section__article-list,
-  .how .section__article-list {
+  .section__accented .section__article-list {
     width: 65%;
   }
 }
 
 @media (width < 768px) and (width >= 375px) {
-  .why .section__article-list,
-  .how .section__article-list {
+  .section__accented .section__article-list {
     width: 100%;
   }
 }
@@ -371,12 +365,6 @@
 @media (width >= 1024px) {
   .what .section__article-list {
     justify-content: space-between;
-  }
-}
-
-@media (width < 1024px) and (width >= 375px) {
-  .what .section__article-list {
-    gap: 20px;
   }
 }
 
